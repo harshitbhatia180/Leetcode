@@ -12,13 +12,13 @@ public:
     }
     
     bool dfs(vector<vector<char>>& nums,vector<vector<int>>& empty_pos,int i){
-        //if i==empty_pos.size() means we were able to fill up all empty values hence return true;
+        //if i==empty_pos.size() means we were able to fill up all the empty values hence return true;
         if(i==empty_pos.size()) return true;
         int x=empty_pos[i][0]; int y=empty_pos[i][1];
         //try all possible values
         for(int z=0;z<9;z++){
             if(valid(x,y,z)){
-                //if a value if valid update the board, hashsets and recursively call dfs for the next empty_pos
+                //if a value is valid update the board, hashsets and recursively call dfs for the next empty_pos
                 nums[x][y]=(z+'1');
                 row[x][z]=true; col[y][z]=true; sq[x/3][y/3][z]=true;
                 if(dfs(nums,empty_pos,i+1)) return true;
